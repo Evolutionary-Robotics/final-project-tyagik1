@@ -98,7 +98,7 @@ def fitnessFunction(gene):
 
         base_pos, base_orn = p.getBasePositionAndOrientation(robotId)
         x, y, z = base_pos
-        if z < 0.3:
+        if z < 1.0:
             break
         fitness = x - abs(y) * 0.1
 
@@ -107,7 +107,7 @@ def fitnessFunction(gene):
     return fitness
 
 def testRobot():
-    gene = np.load(f"gene{1}.npy")
+    gene = np.load(f"gene.npy")
 
     p.connect(p.GUI)
 
@@ -185,7 +185,7 @@ def testRobot():
         time.sleep(1 / 60)
         base_pos, base_orn = p.getBasePositionAndOrientation(robotId)
         x, y, z = base_pos
-        if z < 0.3:
+        if z < 1.0:
             break
         fitness = x - abs(y) * 0.1
 
@@ -237,5 +237,5 @@ for i in range(hidden):
 # for i in range(geneSize):
 #     barriers.append([-paramB, paramB])
 
-# runRobot() # uncomment to run
-testRobot() # only use to only run the visualizable tests
+runRobot() # uncomment to run
+# testRobot() # only use to only run the visualizable tests
